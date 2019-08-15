@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=shared_streets
+POSTGRES_USER=TKvXZYDDUMXOAqfzmgJvVqXmTgWmnHak
+POSTGRES_PASSWORD=LpcRrPJYNlMGwVbgJDg9BzSP7ruMpwLw7DgYtfU2YoYTZ3Go31TIEP1nEd4diVOv

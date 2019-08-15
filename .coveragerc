@@ -1,0 +1,5 @@
+[run]
+include = shared_streets/*
+omit = *migrations*, *tests*
+plugins =
+    django_coverage_plugin

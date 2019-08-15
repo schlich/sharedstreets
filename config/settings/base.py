@@ -72,10 +72,12 @@ THIRD_PARTY_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "rest_framework",
+    "phonenumber_field",
 ]
 
 LOCAL_APPS = [
     "shared_streets.users.apps.UsersConfig",
+    "data",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

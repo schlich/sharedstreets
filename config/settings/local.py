@@ -56,3 +56,4 @@ INSTALLED_APPS += ["django_extensions"]  # noqa F405
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+AIRTABLE_API_KEY = env('AIRTABLE_API_KEY')

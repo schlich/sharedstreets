@@ -334,6 +334,7 @@ pip-selfcheck.json
 ### Project template
 
 shared_streets/media/
+imported_data/
 
 .pytest_cache/
 

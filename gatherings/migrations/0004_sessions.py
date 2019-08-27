@@ -2,42 +2,44 @@
 import requests, phonenumbers
 from django.db import migrations
 from django.conf import settings
-from gatherings.serializers import PersonSerializer
+from gatherings.serializers import SessionSerializer
 
-def initialize_from_airtable(apps, schema_editor):
-    response = requests.get('https://api.airtable.com/v0/apps7BNP7qTwR1BGF/People',
+def sessions_from_airtable(apps, schema_editor):
+    response = requests.get('https://api.airtable.com/v0/apps7BNP7qTwR1BGF/Sessions',
                             params={'api_key': settings.AIRTABLE_API_KEY})
     records = response.json()
     while True:
-        people = records['records']
-        for person in people:
-            fields = person['fields']
+        sessions = records['records']
+        for session in sessions:
+            fields = session['fields']
             fields = {k.translate({32: None}): v for k, v in fields.items()}
             fields = {k.replace('?', ''): v for k, v in fields.items()}
-            if 'Phone' in fields:
-                fields['Phone'] = phonenumbers.format_number(
-                    phonenumbers.parse(fields['Phone'], 'US'),
-                    phonenumbers.PhoneNumberFormat.E164
-                )
-            serializer = PersonSerializer(data=fields)
+            fields['airtableID'] = session['id']
+            serializer = SessionSerializer(data=fields)
             serializer.is_valid()
             print(serializer.errors)
             serializer.save()
         if 'offset' not in records:
             break
         offset = records['offset']
-        response = requests.get('https://api.airtable.com/v0/apps7BNP7qTwR1BGF/People',
+        response = requests.get('https://api.airtable.com/v0/apps7BNP7qTwR1BGF/Sessions',
                                 params={'api_key': settings.AIRTABLE_API_KEY,
                                         'offset': offset})
         records = response.json()
 
 
+def delete_sessions(apps, schema_editor):
+    Session = apps.get_model('gatherings', 'Session')
+    Session.objects.all().delete()
+
+
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('gatherings', '0006_auto_20190816_0441'),
+        ('gatherings', '0004_auto_20190822_0613'),
     ]
 
     operations = [
-        migrations.RunPython(initialize_from_airtable)
+        migrations.RunPython(sessions_from_airtable,
+                             delete_sessions)
     ]

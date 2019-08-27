@@ -3,8 +3,9 @@ import requests, phonenumbers
 from django.db import migrations
 from django.conf import settings
 from gatherings.serializers import PersonSerializer
+from gatherings.models import Person
 
-def initialize_from_airtable(apps, schema_editor):
+def people_from_airtable(apps, schema_editor):
     response = requests.get('https://api.airtable.com/v0/apps7BNP7qTwR1BGF/People',
                             params={'api_key': settings.AIRTABLE_API_KEY})
     records = response.json()
@@ -19,6 +20,7 @@ def initialize_from_airtable(apps, schema_editor):
                     phonenumbers.parse(fields['Phone'], 'US'),
                     phonenumbers.PhoneNumberFormat.E164
                 )
+            fields['airtableID'] = person['id']
             serializer = PersonSerializer(data=fields)
             serializer.is_valid()
             serializer.save()
@@ -31,12 +33,18 @@ def initialize_from_airtable(apps, schema_editor):
         records = response.json()
 
 
+def delete_people(apps, schema_editor):
+    Person = apps.get_model('gatherings','Person')
+    Person.objects.all().delete()
+
+
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('gatherings', '0005_auto_20190816_0425'),
+        ('gatherings', '0001_initial'),
     ]
 
     operations = [
-        migrations.RunPython(initialize_from_airtable)
+        migrations.RunPython(people_from_airtable,
+                             delete_people)
     ]

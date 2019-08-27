@@ -27,6 +27,7 @@ PARTICIPATION_LEVELS = [
 
 
 class Person(models.Model):
+    airtableID = models.CharField(max_length=50, unique=True)
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=30)
     pronouns = models.CharField(max_length=20)
@@ -38,16 +39,21 @@ class Person(models.Model):
     connection = models.CharField(max_length=40, choices=CONNECTION_LEVELS)
     participation = models.CharField(max_length=40, choices=PARTICIPATION_LEVELS)
 
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
+
 
 class Gathering(models.Model):
-    name = models.CharField(max_length=30)
+    airtableID = models.CharField(max_length=20, unique=True)
+    name = models.CharField(max_length=200)
     description = models.CharField(max_length=300)
     category = models.CharField(max_length=2, choices=GATHERING_CATEGORIES)
-    author = models.ForeignKey(Person, on_delete=models.CASCADE)
+    authors = models.ManyToManyField(Person)
 
 
 class Session(models.Model):
+    airtableID = models.CharField(max_length=20, unique=True)
     date = models.DateField()
+    leader = models.ManyToManyField(Person, related_name='sessions_lead')
+    attendees = models.ManyToManyField(Person, related_name='sessions_attended')
     gathering = models.ForeignKey(Gathering, on_delete=models.CASCADE)
-    leader = models.ForeignKey(Person, on_delete=models.CASCADE, related_name='leader')
-    attendees = models.ManyToManyField(Person, related_name='attendees')

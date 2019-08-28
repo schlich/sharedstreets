@@ -8,7 +8,7 @@
        url('../fonts/Kingthings_Typewriter_2.ttf') format("truetype");
 }
 body{
-  font-family:'Kingthings',sans-serif;
+  font-family:'Kingthings','Permanent Marker', cursive;
   font-size:100%;
   margin:3em;
   background-image:url(../images/background.png);
@@ -18,13 +18,13 @@ body{
   color:#fff;
 }
 h1{
-    font-family:'Kingthings',sans-serif;
+    font-family:'Kingthings','Permanent Marker', cursive;
     text-align:center;
     color:black;
     margin:auto;
 }
 h2,p{
-  font-family:'Kingthings',sans-serif;
+  font-family:'Kingthings','Permanent Marker', cursive;
   font-size:100%;
   font-weight:normal;
 }

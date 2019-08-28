@@ -266,3 +266,4 @@ SOCIALACCOUNT_ADAPTER = "shared_streets.users.adapters.SocialAccountAdapter"
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+AIRTABLE_API_KEY = env('AIRTABLE_API_KEY')

@@ -1,14 +1,42 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="{% static 'css/gatherings.css' %}">
+  <style>
+    @font-face {
+      font-family: 'Kingthings';
+      src: local('Kingthings'),
+      url('{% static 'fonts/Kingthings_Typewriter_2.ttf' %}') format("truetype");
+    }
+  </style>
 </head>
 <body>
+  <img src="{% static 'images/banner.png' %}" alt="Shared Streets" class="center">
   <h1>Upcoming Gatherings:</h1>
   <ul>
     {% for session in upcoming_gatherings %}
-      <li>{{ session.gathering.name }}</li>
+    <li>
+      {% if session.gathering.category == 'CL' %}
+      <a href="#" class="class">
+      {% elif session.gathering.category == 'GR' %}
+      <a href="#" class="group">
+      {% else %}
+      <a href="#">
+      {% endif %}
+
+          <h2>{{ session.gathering.name }}</h2>
+          <p>{{ session.date|date:"D, M j" }}</p>
+          <p>{{ session.start_time|date:"f" }}{{ session.end_time|date:"-f" }}</p>
+          <p>{{ session.location }}</p>
+        </a>
+      </div>
+    </li>
     {% endfor %}
   </ul>
 </body>

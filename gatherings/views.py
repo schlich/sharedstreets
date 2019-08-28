@@ -10,8 +10,8 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         today = datetime.date.today()
-        end = today + datetime.timedelta(days=7)
-        return Session.objects.filter(date__range=[today, end])
+        end = today + datetime.timedelta(days=14)
+        return Session.objects.filter(date__range=[today, end]).order_by('date')
 
 # def upcoming_sessions(request):
 #     today = datetime.date.today()

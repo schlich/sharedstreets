@@ -342,3 +342,4 @@ imported_data/
 .env
 .envs/*
 !.envs/.local/
+sharedstreets.dump

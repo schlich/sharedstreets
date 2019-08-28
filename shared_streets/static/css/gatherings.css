@@ -2,6 +2,11 @@
   margin:0;
   padding:0;
 }
+@font-face {
+  font-family: 'Kingthings';
+  src: local('Kingthings'),
+       url('../fonts/Kingthings_Typewriter_2.ttf') format("truetype");
+}
 body{
   font-family:'Kingthings',sans-serif;
   font-size:100%;

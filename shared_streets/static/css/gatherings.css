@@ -4,8 +4,7 @@
 }
 @font-face {
   font-family: 'Kingthings';
-  src: local('Kingthings'),
-       url('../fonts/Kingthings_Typewriter_2.ttf') format("truetype");
+  src: url('../static/fonts/Kingthings_Typewriter_2.ttf') format("truetype");
 }
 body{
   font-family:'Kingthings','Permanent Marker', cursive;
@@ -34,6 +33,8 @@ ul,li{
 ul{
   overflow:hidden;
   padding:3em;
+  margin-left:auto;
+  margin-right:auto;
 }
 ul li a{
   text-decoration:none;

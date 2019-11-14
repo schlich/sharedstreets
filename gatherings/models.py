@@ -30,7 +30,7 @@ PARTICIPATION_LEVELS = [
 
 
 class Person(models.Model):
-    airtableID = models.CharField(max_length=50, unique=True)
+    airtableID = models.CharField(max_length=50, unique=True, blank=True, null=True)
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=30)
     pronouns = models.CharField(max_length=20)

@@ -23,18 +23,11 @@
 </head>
 <body>
   <img src="{% static 'images/banner.png' %}" alt="Shared Streets" class="center">
-  <h1>Upcoming Sessions:</h1>
+  <h2>week @ a glance:</h2>
+
   <ul>
     {% for session in upcoming_gatherings %}
     <li>
-      {% if session.gathering.category == 'CL' %}
-      <a href="#" class="class">
-      {% elif session.gathering.category == 'GR' %}
-      <a href="#" class="group">
-      {% else %}
-      <a href="#">
-      {% endif %}
-
           <h2>{{ session.gathering.name }}</h2>
           <p>{{ session.date|date:"D, M j" }}</p>
           <p>{{ session.start_time|date:"f" }}{{ session.end_time|date:"-f" }}</p>

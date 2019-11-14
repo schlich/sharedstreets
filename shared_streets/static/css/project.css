@@ -24,7 +24,6 @@
 body{
   font-family:'Kingthings','Permanent Marker', cursive;
   font-size:100%;
-  margin:3em;
   background-image:url(../images/background.png);
   background-color:black;
   background-repeat:repeat-y;
@@ -32,6 +31,28 @@ body{
   color:black;
 }
 
-.navbar-header {
-  float: initial;
+ul {
+  list-style-type: none;
+}
+
+h5{
+  transform:rotate(-2deg);
+}
+h5 span {
+  background-color:black;
+  color:white;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 30px;
+  padding-right: 30px;
+  letter-spacing: 5px;
+}
+
+li p {
+  padding-top: 15px;
+  padding-left: 30px;
+}
+
+p {
+  padding-left: 20px;
 }

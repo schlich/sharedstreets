@@ -1,41 +1,39 @@
-{% load static %}
+{% extends "base.html" %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
 
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-  <link rel="stylesheet" href="{% static 'css/gatherings.css' %}">
-  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
-  <style>
-    @font-face {
-      font-family: 'Kingthings';
-      src: local('Kingthings Trypewriter 2'),
-           url({% static 'fonts/Kingthings_Typewriter_2.ttf' %}) format("truetype"),
-           url({% static 'fonts/Kingthings_Typewriter_2.otf' %}),
-           url({% static 'fonts/Kingthings_Typewriter_2.woff' %}) format('woff'),
-           url({% static 'fonts/Kingthings_Typewriter_2.woff2' %}) format("woff2");
-    }
-  </style>
-</head>
-<body>
-  <img src="{% static 'images/banner.png' %}" alt="Shared Streets" class="center">
-  <h2>week @ a glance:</h2>
-
-  <ul>
-    {% for session in upcoming_gatherings %}
-    <li>
-          <h2>{{ session.gathering.name }}</h2>
-          <p>{{ session.date|date:"D, M j" }}</p>
-          <p>{{ session.start_time|date:"f" }}{{ session.end_time|date:"-f" }}</p>
-          <p>{{ session.location }}</p>
-        </a>
-      </div>
-    </li>
-    {% endfor %}
-  </ul>
-</body>
-</html>
+{% block content %}
+<div class='row'>
+  <div class='col-sm'>
+    <h2>week @ a glance:</h2>
+    <ul>
+      {% for session in upcoming_gatherings %}
+      <li>
+            <h5><span>{{ session.date|date:"l, M. j"|upper }}</span></h5>
+            <p>
+              {{ session.gathering.name|lower }}<br>
+              {{ session.start_time|date:"g:i" }}{{ session.end_time|date:"-g:i" }} @{{ session.location }}
+            </p>
+          </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class='col-sm'>
+    <h3>WHO WE ARE:</h3>
+    <p>
+        We are a collection of individuals working to create space and connection in South City. We are normal, counter-cultural, DIY, non-binary, non-normative, creative and experiential people making space for all those who also feel like they don’t fit. We meet at tables, have conversations, share food, celebrate, learn, worship, garden, and care for one another.
+    </p>
+    <h3>WHAT WE BELIEVE:</h3>
+    <p>
+      <ul>
+        <li>that we belong to each other</li>
+        <li>that we can be brave together</li>
+        <li>that we are responsible for our community</li>
+        <li>that together we are larger than any one institution, church, political party, or any other identification</li>
+      </ul>
+    </p>
+    <h3>CONTACT US:</h3>
+    <p>Call us @314-884-0754</p>
+  </div>
+</div>
+{% endblock content %}

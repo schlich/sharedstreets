@@ -1,19 +1,19 @@
 {% extends "base.html" %}
 
-
 {% block content %}
+
+{% load instagram_client %}
 <div class='row'>
   <div class='col-sm'>
     <h2>week @ a glance:</h2>
     <ul>
       {% for session in upcoming_gatherings %}
       <li>
-            <h5><span>{{ session.date|date:"l, M. j"|upper }}</span></h5>
-            <p>
-              {{ session.gathering.name|lower }}<br>
-              {{ session.start_time|date:"g:i" }}{{ session.end_time|date:"-g:i" }} @{{ session.location }}
-            </p>
-          </a>
+          <h5><span>{{ session.date|date:"l, M. j"|upper }}</span></h5>
+          <p>
+            {{ session.gathering.name|lower }}<br>
+            {{ session.start_time|date:"g:i" }}{{ session.end_time|date:"-g:i" }} @{{ session.location }}
+          </p>
       </li>
       {% endfor %}
     </ul>
@@ -36,4 +36,9 @@
     <p>Call us @314-884-0754</p>
   </div>
 </div>
+<br><br>
+<!-- <div id="django_recent_media_wall">
+  {% instagram_recent_media_wall username='sharedstreetsstl' %}
+</div> -->
+
 {% endblock content %}

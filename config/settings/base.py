@@ -73,6 +73,9 @@ THIRD_PARTY_APPS = [
     "allauth.socialaccount",
     "rest_framework",
     "phonenumber_field",
+    "sorl.thumbnail",
+    "django_instagram",
+    "recurrence",
 ]
 
 LOCAL_APPS = [

@@ -66,4 +66,4 @@ class GatheringDelete(DeleteView):
     model = Gathering
     success_url = reverse_lazy('author-list')
 
-class Session
+# class Session

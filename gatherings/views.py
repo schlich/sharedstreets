@@ -34,7 +34,7 @@ class GatheringCreate(CreateView):
     model = Gathering
     fields = ['name','description','category','authors']
     
-    
+
 class GatheringSessionCreate(CreateView):
     model = Gathering
     def get_context_data(self, **kwargs):
@@ -65,3 +65,5 @@ class GatheringUpdate(UpdateView):
 class GatheringDelete(DeleteView):
     model = Gathering
     success_url = reverse_lazy('author-list')
+
+class Session

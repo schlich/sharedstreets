@@ -55,6 +55,7 @@ class Gathering(models.Model):
     authors = models.ManyToManyField(Person)
     dates = RecurrenceField(null=True, blank=True)
 
+
     def __str__(self):
         return self.name
 

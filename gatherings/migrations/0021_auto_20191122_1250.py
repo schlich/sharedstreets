@@ -15,11 +15,6 @@ class Migration(migrations.Migration):
             name='dates_description',
             field=models.TextField(null=True),
         ),
-        migrations.AddField(
-            model_name='gathering',
-            name='location',
-            field=models.CharField(max_length=50, null=True),
-        ),
         migrations.AlterField(
             model_name='gathering',
             name='description',

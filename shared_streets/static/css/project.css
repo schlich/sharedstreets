@@ -35,9 +35,6 @@ ul {
   list-style-type: none;
 }
 
-h5{
-  transform:rotate(-2deg);
-}
 h5 span {
   background-color:black;
   color:white;
@@ -46,6 +43,7 @@ h5 span {
   padding-left: 30px;
   padding-right: 30px;
   letter-spacing: 5px;
+  transform:rotate(-2deg);
 }
 
 li p {

@@ -1,12 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h3>Gatherings</h3>
+  <h3>Winter Gatherings</h3>
   {% if gathering_list %}
   <ul>
     {% for gathering in gathering_list %}
       <li>
-        <a href="{{ gathering.get_absolute_url }}">{{ gathering.name }}</a> ({{gathering.description}})
+        <h5><span>{{ gathering.name }}</span></h5>
+        <p>{{ gathering.dates_description }}</p>
+        <p>{{ gathering.location }}</p>
+        <p>{{ gathering.description }}</p>
       </li>
     {% endfor %}
   </ul>

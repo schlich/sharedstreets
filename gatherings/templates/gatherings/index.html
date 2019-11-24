@@ -9,7 +9,7 @@
     <ul>
       {% for session in upcoming_gatherings %}
       <li>
-          <h5><span>{{ session.date|date:"l, M. j"|upper }}</span></h5>
+          <h5 class="rotate"><span>{{ session.date|date:"l, M. j"|upper }}</span></h5>
           <p>
             {{ session.gathering.name|lower }}<br>
             {{ session.start_time|date:"g:i" }}{{ session.end_time|date:"-g:i" }} @{{ session.location }}

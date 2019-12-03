@@ -34,14 +34,14 @@ class Person(models.Model):
     airtableID = models.CharField(max_length=50, unique=True, blank=True, null=True)
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=30)
-    # pronouns = models.CharField(max_length=20)
-    phone = PhoneNumberField(null=True)
-    email = models.EmailField(null=True)
-    birthday = models.DateField(null=True)
+    pronouns = models.CharField(max_length=20, null=True, blank=True)
+    phone = PhoneNumberField(null=True, blank=True)
+    email = models.EmailField(null=True, blank=True)
+    birthday = models.DateField(null=True, blank=True)
     leadership_interested = models.BooleanField(null=True)
     leadership_trained = models.BooleanField(null=True)
-    connection = models.CharField(max_length=40, choices=CONNECTION_LEVELS, null=True)
-    participation = models.CharField(max_length=40, choices=PARTICIPATION_LEVELS, null=True)
+    connection = models.CharField(max_length=40, choices=CONNECTION_LEVELS, null=True, blank=True)
+    participation = models.CharField(max_length=40, choices=PARTICIPATION_LEVELS, null=True, blank=True)
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'

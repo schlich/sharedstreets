@@ -26,7 +26,6 @@ django-appconf==1.0.2
 django-classy-tags==0.8.0
 django-cms==3.5.3
 django-connected==0.1.5
-django-cors-headers==3.2.0
 django-coverage-plugin==1.6.0
 django-crispy-forms==1.7.2
 django-debug-toolbar==2.0

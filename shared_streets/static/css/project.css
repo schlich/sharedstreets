@@ -22,6 +22,8 @@
 }
 
 body{
+  overflow-y: hidden ! important;
+  overflow-x: hidden ! important;
   font-family:'Kingthings','Permanent Marker';
   font-size:100%;
   background-image:url(../images/background.png);

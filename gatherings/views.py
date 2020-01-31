@@ -4,6 +4,7 @@ from django.views import generic
 from django.views.generic.edit import FormView, CreateView, DeleteView, UpdateView
 from gatherings.models import Session, Gathering
 from gatherings.forms import SessionFormSet
+from schedule.models import Event
 import datetime
 
 
@@ -12,9 +13,7 @@ class IndexView(generic.ListView):
     context_object_name = 'upcoming_gatherings'
 
     def get_queryset(self):
-        today = datetime.date.today()
-        end = today + datetime.timedelta(days=14)
-        return Session.objects.filter(date__range=[today, end]).order_by('date')
+        return Event.objects.all()
 
 # class QuarterGatherings(generic.ListView):
 #     template_name = 'gatherings/quarter.html'

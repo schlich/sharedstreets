@@ -7,7 +7,7 @@
   <div class='col-sm'>
     <h2>upcoming events:</h2>
     <ul>
-      
+      {% for session in sessions %}
       <li>
           <h5 class="rotate"><span>{{ session.date|date:"l, M. j"|upper }}</span></h5>
           <p>

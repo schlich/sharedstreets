@@ -50,7 +50,7 @@ class Person(models.Model):
 
 class Gathering(models.Model):
 #     airtableID = models.CharField(max_length=20, blank=True, null=True)
-    event = models.OneToOneField(Event, on_delete=models.CASCADE, primary_key=True)
+    event = models.OneToOneField(Event, on_delete=models.CASCADE, primary_key=True, related_name='gathering')
     location = models.CharField(max_length=50, null=True)
     category = models.CharField(max_length=2, choices=GATHERING_TYPES)
     authors = models.ManyToManyField(Person)

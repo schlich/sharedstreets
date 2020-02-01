@@ -5,15 +5,27 @@ from django.views.generic.edit import FormView, CreateView, DeleteView, UpdateVi
 from gatherings.models import Session, Gathering
 from gatherings.forms import SessionFormSet
 from schedule.models import Event
+from schedule.utils import EventListManager
+from django.utils import timezone
 import datetime
 
 
 class IndexView(generic.ListView):
     template_name = 'gatherings/index.html'
-    context_object_name = 'upcoming_gatherings'
 
-    def get_queryset(self):
-        return Event.objects.all()
+    model = Event
+
+    def get_context_data(self, **kwargs):
+        event_qs = Event.objects.all()
+        sessions_generator = EventListManager(list(event_qs)).occurrences_after()
+        sessions_list = [next(sessions_generator) for i in range(5)]
+        context = super().get_context_data(**kwargs)
+        context['upcoming'] = sessions_list
+        
+        return context
+    # def get_queryset(self):
+
+    #     return Event.objects.all()
 
 # class QuarterGatherings(generic.ListView):
 #     template_name = 'gatherings/quarter.html'

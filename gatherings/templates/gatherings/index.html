@@ -7,12 +7,12 @@
   <div class='col-sm'>
     <h2>upcoming events:</h2>
     <ul>
-      {% for session in sessions %}
+      {% for session in upcoming %}
       <li>
-          <h5 class="rotate"><span>{{ session.date|date:"l, M. j"|upper }}</span></h5>
+          <h5 class="rotate"><span>{{ session.start|date:"l, M. j"|upper }}</span></h5>
           <p>
-            {{ session.gathering.name|lower }}<br>
-            {{ session.start_time|date:"g:i" }}{{ session.end_time|date:"-g:i" }} @{{ session.location }}
+            {{ session.event.title|lower }}<br>
+            {{ session.event.start|date:"g:i" }}{{ session.event.end|date:"-g:i" }} @{{ session.event.gathering.location }}
           </p>
       </li>
       {% endfor %}

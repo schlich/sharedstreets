@@ -2,6 +2,7 @@ from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from recurrence.fields import RecurrenceField
 from schedule.models import Event
+from datetime import datetime
 
 
 GATHERING_TYPES = [
@@ -31,6 +32,7 @@ PARTICIPATION_LEVELS = [
 ]
 
 
+
 class Person(models.Model):
     airtableID = models.CharField(max_length=50, unique=True, blank=True, null=True)
     first_name = models.CharField(max_length=20)
@@ -50,13 +52,32 @@ class Person(models.Model):
 
 class Gathering(models.Model):
 #     airtableID = models.CharField(max_length=20, blank=True, null=True)
-    event = models.OneToOneField(Event, on_delete=models.CASCADE, primary_key=True, related_name='gathering')
+    # event = models.OneToOneField(Event, on_delete=models.CASCADE, primary_key=True, related_name='gathering')
+    name = models.CharField(max_length=50)
+    description = models.TextField()
+    recurrences = RecurrenceField(null=True)
+    start_time = models.TimeField()
+    end_time = models.TimeField()
     location = models.CharField(max_length=50, null=True)
     category = models.CharField(max_length=2, choices=GATHERING_TYPES)
     authors = models.ManyToManyField(Person)
 
+    @property
+    def Date(self):
+        return self.recurrences.after(datetime.now())
+    
+    @property
+    def recurrence_text(self):
+        return " + ".join([rule.to_text() for rule in self.recurrences.rrules])
+
     def __str__(self):
-        return self.event.title
+        return self.name
+
+
+# class EventGrouper(models.Model):
+#     event = models.OneToOneField(Event)
+#     gathering = models.ForeignKey(Gathering,on_delete=models.CASCADE)
+
 
 class Session(models.Model):
     airtableID = models.CharField(max_length=20, blank=True, null=True)

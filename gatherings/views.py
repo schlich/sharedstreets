@@ -4,8 +4,6 @@ from django.views import generic
 from django.views.generic.edit import FormView, CreateView, DeleteView, UpdateView
 from gatherings.models import Session, Gathering
 from gatherings.forms import SessionFormSet
-from schedule.models import Event
-from schedule.utils import EventListManager
 from django.utils import timezone
 import datetime
 
@@ -13,15 +11,13 @@ import datetime
 class IndexView(generic.ListView):
     template_name = 'gatherings/index.html'
 
-    model = Event
+    model = Gathering
 
     def get_context_data(self, **kwargs):
-        event_qs = Event.objects.all()
-        sessions_generator = EventListManager(list(event_qs)).occurrences_after()
-        sessions_list = [next(sessions_generator) for i in range(5)]
+        event_list = list(Gathering.objects.all())
+        upcoming_events = sorted(event_list, key = lambda event: event.Date)[:5]
         context = super().get_context_data(**kwargs)
-        context['upcoming'] = sessions_list
-        
+        context['upcoming'] = upcoming_events 
         return context
     # def get_queryset(self):
 

@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h3>Winter Gatherings</h3>
+  <h2>Winter Gatherings</h2><br>
   {% if gathering_list %}
   <ul>
-    {% for gathering in gathering_list %}
+    {% for event in gathering_list %}
       <li>
-        <h5><span>{{ gathering.name }}</span></h5>
-        <p>{{ gathering.dates_description }}</p>
-        <p>{{ gathering.location }}</p>
-        <p>{{ gathering.description }}</p>
+        <h5><span>{{ event.name }}</span></h5>
+        <p>{{ event.recurrence_text }}</p>
+        <p>{{ event.start_time|time:"g:i" }}{{ event.end_time|time:"-g:i" }} @{{ event.location }}</p>
+        <p>{{ event.description }}</p>
       </li>
     {% endfor %}
   </ul>

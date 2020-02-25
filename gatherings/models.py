@@ -1,7 +1,6 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from recurrence.fields import RecurrenceField
-from schedule.models import Event
 from datetime import datetime
 
 

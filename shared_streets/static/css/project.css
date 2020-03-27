@@ -22,7 +22,7 @@
 }
 
 body{
-  overflow-y: hidden ! important;
+  overflow-y: scroll;
   overflow-x: hidden ! important;
   font-family:'Kingthings','Permanent Marker';
   font-size:100%;

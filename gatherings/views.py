@@ -15,7 +15,10 @@ class IndexView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         event_list = list(Gathering.objects.all())
-        upcoming_events = sorted(event_list, key = lambda event: event.Date)[:5]
+        if event_list:
+            upcoming_events = sorted(event_list, key = lambda event: event.Date)[:5]
+        else:
+            upcoming_events = []
         context = super().get_context_data(**kwargs)
         context['upcoming'] = upcoming_events 
         return context

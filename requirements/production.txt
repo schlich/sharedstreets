@@ -2,11 +2,10 @@
 
 -r ./base.txt
 
-gunicorn==19.9.0  # https://github.com/benoitc/gunicorn
-psycopg2==2.8.3 --no-binary psycopg2  # https://github.com/psycopg/psycopg2
-Collectfast==0.6.2  # https://github.com/antonagestam/collectfast
-whitenoise==4.1.4
+gunicorn==20.0.4  # https://github.com/benoitc/gunicorn
+psycopg2==2.8.4 --no-binary psycopg2  # https://github.com/psycopg/psycopg2
+whitenoise==5.0.1
 
 # Django
 # ------------------------------------------------------------------------------
-django-anymail[mailgun]==6.1.0  # https://github.com/anymail/django-anymail
+django-anymail[mailgun]==7.0.0  # https://github.com/anymail/django-anymail

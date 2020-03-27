@@ -1,7 +1,10 @@
 django-recurrence
 django-phonenumber-field[phonenumbers]
+<<<<<<< HEAD
 whitenoise
 
+=======
+>>>>>>> 3050fd713a7561aa33716a7c2375cd2e30c03a72
 pytz==2019.2  # https://github.com/stub42/pytz
 python-slugify==3.0.3  # https://github.com/un33k/python-slugify
 Pillow==6.1.0  # https://github.com/python-pillow/Pillow
@@ -15,8 +18,12 @@ django-environ==0.4.5  # https://github.com/joke2k/django-environ
 django-model-utils==3.2.0  # https://github.com/jazzband/django-model-utils
 django-allauth==0.41.0  # https://github.com/pennersr/django-allauth
 django-crispy-forms==1.8.1  # https://github.com/django-crispy-forms/django-crispy-forms
-django-redis==4.10.0  # https://github.com/niwinz/django-redis
+django-redis==4.11.0  # https://github.com/niwinz/django-redis
 # Django REST Framework
 djangorestframework==3.10.2  # https://github.com/encode/django-rest-framework
+<<<<<<< HEAD
 coreapi==2.3.3  # https://github.com/core-api/python-client
 
+=======
+coreapi==2.3.3  # https://github.com/core-api/python-client
+>>>>>>> 3050fd713a7561aa33716a7c2375cd2e30c03a72

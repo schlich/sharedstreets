@@ -16,6 +16,7 @@ django-allauth = "^0.42.0"
 python-dotenv = "^0.13.0"
 django_crispy_forms = "^1.9.1"
 django-rest-framework = "^0.1.0"
+argon2-cffi = "^20.1.0"
 
 [tool.poetry.dev-dependencies]
 django-debug-toolbar = "^2.2"

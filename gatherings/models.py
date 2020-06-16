@@ -64,7 +64,11 @@ class Gathering(models.Model):
 
     @property
     def Date(self):
-        return self.recurrences.after(datetime.now())
+        next_date = self.recurrences.after(datetime.now())
+        if next_date:
+            return next_date
+        else:
+            return self.recurrences.occurrences()[0]
     
     @property
     def recurrence_text(self):

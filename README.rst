@@ -22,13 +22,13 @@ Setting up your local environment
 3) Clone this repository and cd into repo
 4) Activate your virtual environment with Poetry and install dependencies::
 
-  poetry shell
-  poetry install
+	poetry shell
+	poetry install
 
 5) run migrations::
 
-  python manage.py migrate
-  
+	python manage.py migrate
+
 Settings
 --------
 

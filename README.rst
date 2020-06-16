@@ -14,6 +14,21 @@ Shared Streets Website & Data Management
 :License: MIT
 
 
+Setting up your local environment
+---------------------------------
+
+1) Make sure you have a version of Python 3 installed and an instance of postgresql running locally
+2) Install `Poetry <https://python-poetry.org/docs/#installation>`_.
+3) Clone this repository and cd into repo
+4) Activate your virtual environment with Poetry and install dependencies::
+
+  poetry shell
+  poetry install
+
+5) run migrations::
+
+  python manage.py migrate
+  
 Settings
 --------
 
